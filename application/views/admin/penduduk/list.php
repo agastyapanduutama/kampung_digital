@@ -22,8 +22,8 @@
     <?php } ?>
 
     <div class="card-body">
-        <div class="table-responsive">
-            <table id="list_penduduk" class="table table-striped table-bordered" style="width:100%">
+        <div class="table-responsive ">
+            <table id="example1" class="tableNa table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -38,72 +38,29 @@
                 </thead>
 
                 <tbody>
+                    <?php $no = 1;
+                    foreach ($data as $key) { ?>
+                        <tr>
+                            <td><?= $no++ ?></td>
+                            <td><?= $key->warga ?></td>
+                            <td><?= $key->nama_lengkap ?></td>
+                            <td><?php
+                                $jk = ($key->jk == 1) ? "Laki-laki" : "Perempuan";
+                                echo $jk;
+                                ?></td>
+                            <td><?= $key->nama_pekerjaan ?></td>
+                            <td><?= $key->nama_pendidikan ?></td>
+                            <td><?= $key->nama_agama ?></td>
+                            <td>
+                                <a href="<?= base_url("admin/penduduk/delete/" . $this->req->acak($key->id)) ?>" class="btn btn-danger btn-sm" id="delete" onclick="return confirm('Apakah anda yakin ingin menghapus data ini??');" title="Hapus Data"><i class="fas fa-trash-alt"></i></a>
+
+                                <a href="<?= base_url("admin/penduduk/edit/" . $this->req->acak($key->id)) ?>" class="btn btn-warning btn-sm" id="edit" title="Edit data"><i class="fas fa-pencil-alt"></i></a></td>
+                        </tr>
+                    <?php } ?>
                 </tbody>
 
             </table>
         </div>
     </div>
 </div>
-</div>
-
-<div class="modal fade" tabindex="-1" role="dialog" id="modalTambah">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Tambah penduduk</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form id="formAddpenduduk">
-                <div class="modal-body">
-
-
-                    <div class="form-group">
-                        <label>Nama penduduk</label>
-                        <input type="text" name="nama_penduduk" id="penduduk" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Keterangan</label>
-                        <input type="text" name="keterangan" id="keterangan" class="form-control">
-                    </div>
-                </div>
-                <div class="modal-footer bg-whitesmoke br">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" tabindex="-1" role="dialog" id="modalEdit">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Tambah penduduk</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form id="formEditpenduduk">
-                <div class="modal-body">
-                    <input type="hidden" name="id" id="idData">
-
-                    <div class="form-group">
-                        <label>Nama penduduk</label>
-                        <input type="text" name="nama_penduduk" id="penduduk1" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Keterangan</label>
-                        <input type="text" name="keterangan" id="keterangan1" class="form-control">
-                    </div>
-                </div>
-                <div class="modal-footer bg-whitesmoke br">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
 </div>

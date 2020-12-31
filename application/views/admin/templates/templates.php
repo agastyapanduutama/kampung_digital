@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <link rel="shortcut icon" href="http://lipi.go.id/public/themes/web/assets/img/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="http://lipi.go.id/public/themes/web/assets/img/favicon/favicon.ico" type="image/x-icon" />
   <meta name="baseUrl" content="<?= base_url() ?>">
   <meta name="menu" content="<?= (isset($menu)) ? $menu : null ?>">
   <meta name="token" content="<?= $this->session->userdata('token') ?>">
   <meta name="upk" content="<?= $this->session->userdata('upk') ?>">
 
-  <title>Repositori Karya </title>
+  <title>Kelola Penduduk </title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/css/bootstrap.min.css">
@@ -52,7 +52,7 @@
                 <i class="fas fa-cog"></i> Settings
               </a>
               <div class="dropdown-divider"></div>
-             <a href="#" id="btnKeluar" class="dropdown-item has-icon text-danger">
+              <a href="#" id="btnKeluar" class="dropdown-item has-icon text-danger">
                 <i class="fas fa-sign-out-alt"></i> Keluar
               </a>
             </div>
@@ -70,14 +70,14 @@
           <ul class="sidebar-menu">
 
             <li class="menu-header">Menu</li>
-            
+
             <li class="nav-item dropdown">
               <a href="<?= base_url('admin/dashboard') ?>" class="nav-link">
                 <i class="fas fa-columns"></i> <span>Dashboard</span></a>
             </li>
-       
 
-            
+
+
             <li class="nav-item dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-cog"></i> <span>Master</span></a>
               <ul class="dropdown-menu">
@@ -95,8 +95,8 @@
                 <li><a href="<?= base_url('admin/penduduk/tambah') ?>">Tambah Penduduk</a></li>
               </ul>
             </li>
-         
-            
+
+
 
 
         </aside>
@@ -124,13 +124,33 @@
     </div>
   </div>
   <!-- General JS Scripts -->
+
   <script src="<?= base_url() ?>assets/js/jquery-3.3.1.min.js"></script>
   <script src="<?= base_url() ?>assets/js/popper.min.js"></script>
   <script src="<?= base_url() ?>assets/js/bootstrap.min.js"></script>
   <script src="<?= base_url() ?>assets/js/jquery.nicescroll.min.js"></script>
   <script src="<?= base_url() ?>assets/js/moment.min.js"></script>
   <script src="<?= base_url() ?>assets/admin/assets/js/stisla.js"></script>
+
+
+
+  <!-- DataTables  & Plugins -->
   <script type="text/javascript" src="<?= base_url() ?>assets/js/datatables.min.js"></script>
+  <script src="<?= base_url() ?>assets/admin/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?= base_url() ?>assets/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="<?= base_url() ?>assets/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="<?= base_url() ?>assets/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="<?= base_url() ?>assets/admin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="<?= base_url() ?>assets/admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="<?= base_url() ?>assets/admin/plugins/jszip/jszip.min.js"></script>
+  <script src="<?= base_url() ?>assets/admin/plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="<?= base_url() ?>assets/admin/plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="<?= base_url() ?>assets/admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="<?= base_url() ?>assets/admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="<?= base_url() ?>assets/admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+
+
 
   <!-- <script src="<?= base_url() ?>assets/admin/node_modules/prismjs/prism.js"></script> -->
   <!-- JS Libraies -->
@@ -146,6 +166,17 @@
   <script src="<?= base_url() ?>assets/admin/assets/js/page/bootstrap-modal.js"></script>
   <script src="<?= base_url() ?>assets/js/page/admin.js"></script>
   <script src="<?= base_url() ?>assets/js/page/<?= (isset($script)) ? $script : "" ?>.js"></script>
+
+  <script>
+    $(function() {
+      $("#example1").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+  </script>
 
 
 </body>

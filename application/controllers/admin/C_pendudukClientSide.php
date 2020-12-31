@@ -17,14 +17,11 @@ class C_penduduk extends CI_Controller
 
     public function list()
     {
-        $data = $this->penduduk->dataPenduduk();
-
         $data = array(
             'title'  => 'List penduduk',
             'menu'   => 'penduduk',
-            // 'script' => 'penduduk',
-            'konten' => 'admin/penduduk/list',
-            'data'   => $data,
+            'script' => 'penduduk',
+            'konten' => 'admin/penduduk/list'
         );
         $this->load->view('admin/templates/templates', $data, FALSE);
     }
@@ -159,12 +156,17 @@ class C_penduduk extends CI_Controller
     function delete($id)
     {
         if ($this->penduduk->delete($this->req->id($id)) == true) {
-            $this->session->set_flashdata('success', 'Berhasil Hapus data');
-            redirect('admin/penduduk');
+            $msg = array(
+                'status' => 'ok',
+                'msg' => 'Berhasil menghapus data !'
+            );
         } else {
-            $this->session->set_flashdata('failed', 'Gagal menghapus data');
-            redirect('admin/penduduk');
+            $msg = array(
+                'status' => 'fail',
+                'msg' => 'Gagal menghapus data !'
+            );
         }
+        echo json_encode($msg);
     }
 
     function set($id, $action)
