@@ -18,7 +18,7 @@ class C_home extends CI_Controller {
     {
 
         $data = array(
-                      'title'           => 'Dashboard - Repositori Karya Lembaga Ilmu Pengetahuan Indonesia' ,
+                      'title'           => 'Database Penduduk RW 18' ,
                       'konten'          => 'admin/home/dashboard' 
                     );
 

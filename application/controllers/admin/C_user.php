@@ -36,20 +36,43 @@ class C_user extends CI_Controller
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $field) {
-            // $idNa = $this->req->acak($field->id);
-            $idNa = $field->id;
+            $idNa = $this->req->acak($field->id);
+            // $idNa = $field->id;
             $status = ($field->status) == '1' ? "<button class='btn btn-success btn-sm' id='on' data-id='$idNa'><i class='fas fa-toggle-on'></i> On</button>" : "<button class='btn btn-danger btn-sm' id='off' data-id='$idNa'><i class='fas fa-toggle-off'></i> Off</button>";
             // $idNa = $field->id;
             $button = "
                 <button class='btn btn-danger btn-sm' id='delete' data-id='$idNa'><i class='fas fa-trash-alt'></i></button>
-                <button class='btn btn-warning btn-sm' id='edit' data-id='$idNa'><i class='fas fa-pencil-alt'></i></button>
                 <button class='btn btn-info btn-sm' id='reset' data-id='$idNa'><i class='fas fa-sync-alt'></i></button>
             ";
+
+            if ($field->level == '1') {
+                $jabatan = "Ketua RW";
+            }
+
+            if ($field->level == '2') {
+                $jabatan = "Sekretaris RW";
+            }
+
+            if ($field->level == '3') {
+                $jabatan = "Bendahara RW";
+            }
+
+            if ($field->level == '4') {
+                $jabatan = "Ketua RT";
+            }
+            
+            if ($field->level == '5') {
+                $jabatan = "Admin Aplikasi";
+            }
+            
+
             $no++;
             $row = array();
             $row[] = $no;
             $row[] = $field->username;
             $row[] = $field->nama_user;
+            $row[] = $jabatan;
+            $row[] = $field->nama_rt;
             // $row[] = $idNa;
             $row[] = $status;
             $row[] = $button;
@@ -68,36 +91,31 @@ class C_user extends CI_Controller
     function set($id, $action)
     {
         if ($action == 'on') {
-            if ($this->user->update(['status' => '1'], ['id' => $id]) == true) {
+            if ($this->user->update(['status' => '1'], $this->req->id($id)) == true) {
                 $msg = array(
                     'status' => 'ok',
-                    'msg' => 'Berhasil Mengaktifkan Akun !'
+                    'msg' => 'Berhasil Mengaktifkan Data !'
                 );
             } else {
                 $msg = array(
                     'status' => 'fail',
-                    'msg' => 'Gagal menambahkan data !'
+                    'msg' => 'Gagal Mengaktifkan data !'
                 );
             }
             echo json_encode($msg);
+            
         } elseif ($action == 'off') {
-            if ($this->user->update(['status' => '0'], ['id' => $id]) == true) {
+            if ($this->user->update(['status' => '0'], $this->req->id($id)) == true) {
                 $msg = array(
                     'status' => 'ok',
-                    'msg' => 'Berhasil Me-nonaktifkan Akun !'
+                    'msg' => 'Berhasil Me-nonaktifkan Data !'
                 );
             } else {
-                $msg = array(
-                    'status' => 'fail',
-                    'msg' => 'Gagal Me-nonaktifkan data !'
-                );
             }
-
-            // echo $this->db->last_query();
-
+            // echo $this->db->last_query();;
             echo json_encode($msg);
         } elseif ($action == 'reset') {
-            if ($this->user->update(['password' => $this->req->acak('123')], ['id' => $id]) == true) {
+            if ($this->user->update(['password' => $this->req->acak('123')], $this->req->id($id)) == true) {
                 $msg = array(
                     'status' => 'ok',
                     'msg' => 'Berhasil Me-reset Akun !'
@@ -131,6 +149,8 @@ class C_user extends CI_Controller
             'password' => $this->req->acak('123')
         );
         $data = $this->req->all($custom);
+
+        // $this->req->print($data);
         if ($this->user->insert($data) == true) {
             $msg = array(
                 'status' => 'ok',
@@ -171,7 +191,7 @@ class C_user extends CI_Controller
 
     function delete($id)
     {
-        if ($this->db->delete('t_user', ['id' => $id]) == true) {
+        if ($this->db->delete('t_user', [$this->req->encKey('id') => $id]) == true) {
             $msg = array(
                 'status' => 'ok',
                 'msg' => 'Berhasil menghapus data !'
@@ -183,5 +203,12 @@ class C_user extends CI_Controller
             );
         }
         echo json_encode($msg);
+    }
+
+    public function getRt()
+    {
+        $data = $this->db->get('t_rt')->result();
+
+        echo json_encode($data);
     }
 }

@@ -32,6 +32,7 @@ $(document).ready(function () {
 			},
 		],
 	});
+	// getRt()
 })
 
 $('#list_user').on('click', '#edit', function () {
@@ -231,3 +232,66 @@ $("#formEditUser").submit(function (e) {
 setInterval(() => {
 	table.ajax.reload(null, false);
 }, 30000);
+
+
+
+
+$(document).delegate("#level", 'change', function () {
+	let sifat = $("#level").val();
+	if (sifat == '4') {
+		$('#rt').html(getRt());
+	}else{
+		$("#rt").html('')
+	}
+})
+
+function getRt() {
+
+	let html = ''
+	let optionNa = ''
+	$('#rt').find('option').remove().end()
+	$('#rt').append("<option value='0'> Paling Atas </option>");
+	$.ajax({
+		dataType: "json",
+		url: baseUrl + "admin/user/rt",
+		success: function (result) {
+			console.log(result);
+			let response = jQuery.parseJSON(JSON.stringify(result));
+			response.forEach(item => {
+				optionNa += `<option value='${item.id}'>${item.nama_rt}</option>`
+			})
+			html = `
+				<div class="form-group">
+                	<label>Ketua RT</label>
+					<select class="form-control" name="id_rt">
+						${optionNa}
+					</select>
+                </div>
+			`
+			$("#rt").html(html)
+		}
+	})
+
+	$('#rt1').find('option').remove().end()
+	$('#rt1').append("<option value='0'> Paling Atas </option>");
+	$.ajax({
+		dataType: "json",
+		url: baseUrl + "admin/user/rt",
+		success: function (result) {
+			console.log(result);
+			let response = jQuery.parseJSON(JSON.stringify(result));
+			response.forEach(item => {
+				optionNa += `<option value='${item.id}'>${item.nama_rt}</option>`
+			})
+			html = `
+				<div class="form-group">
+                	<label>Ketua RT</label>
+					<select class="form-control" name="id_rt">
+						${optionNa}
+					</select>
+                </div>
+			`
+			$("#rt1").html(html)
+		}
+	})
+}

@@ -16,12 +16,17 @@ class M_penduduk extends CI_Model
     private function _get_datatables_query()
     {
 
+        $level = $this->session->level;
         $this->db->select('t_penduduk.*,t_pendidikan.nama_pendidikan, t_agama.nama_agama, t_pernikahan.nama_pernikahan, t_pekerjaan.nama_pekerjaan');
         $this->db->from($this->table);
         $this->db->join('t_agama', 't_agama.id = t_penduduk.id_agama', 'left');
         $this->db->join('t_pendidikan', 't_pendidikan.id = t_penduduk.id_pendidikan', 'left');
         $this->db->join('t_pernikahan', 't_pernikahan.id = t_penduduk.id_pernikahan', 'left');
         $this->db->join('t_pekerjaan', 't_pekerjaan.id = t_penduduk.id_pekerjaan', 'left');
+        if ($level == '4') {
+            $this->db->where('warga', $_SESSION['rt']);
+            
+        }
         
 
         $i = 0;
@@ -74,6 +79,7 @@ class M_penduduk extends CI_Model
 
     public function dataPenduduk()
     {
+        $level = $this->session->level;
         $this->db->select('t_penduduk.*,t_pendidikan.nama_pendidikan, t_agama.nama_agama, t_pernikahan.nama_pernikahan, t_pekerjaan.nama_pekerjaan');
         $this->db->from($this->table);
         $this->db->join('t_agama', 't_agama.id = t_penduduk.id_agama', 'left');
@@ -81,6 +87,9 @@ class M_penduduk extends CI_Model
         $this->db->join('t_pernikahan', 't_pernikahan.id = t_penduduk.id_pernikahan', 'left');
         $this->db->join('t_pekerjaan', 't_pekerjaan.id = t_penduduk.id_pekerjaan', 'left');
         $this->db->order_by('t_penduduk.id', 'desc');
+        if ($level == '4') {
+            $this->db->where('warga', $_SESSION['rt']);
+        }
         return $this->db->get()->result();
         
         

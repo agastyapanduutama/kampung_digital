@@ -12,7 +12,6 @@ class C_pernikahan extends CI_Controller
             redirect(base_url());
         }
         $this->load->model('admin/M_pernikahan', 'pernikahan');
-        $this->pernikahan->upk = $this->session->userdata('UPK');
     }
 
     public function list()

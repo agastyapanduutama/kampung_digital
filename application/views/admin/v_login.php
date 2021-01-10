@@ -27,7 +27,7 @@
         <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
           <div class="p-4 m-3">
             <!-- <img src="<?= base_url()?>assets/admin/assets/img/stisla-fill.svg" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2"> -->
-            <h4 class="text-dark font-weight-normal">Selamat Datang di Halaman <span class="font-weight-bold">Login Repostori Karya</span></h4>
+            <h4 class="text-dark font-weight-normal">Selamat Datang di Halaman <span class="font-weight-bold">Login Database Penduduk RW 18 Kelurahan Antapani Kidul</span></h4>
             <p class="text-muted">Silakan Masukan Username dan Password anda</p>
               <?php
               if ($this->session->flashdata('warning')) {
@@ -76,7 +76,7 @@
           <div class="absolute-bottom-left index-2">
             <div class="text-light p-5 pb-2">
               <div class="mb-5 pb-3">
-                <h1 class="mb-2 display-4 font-weight-bold">Wilujeng Dongkap</h1>
+                <h1 class="mb-2 display-4 font-weight-bold">Wilujeng Sumping</h1>
               </div>
               Photo by <a class="text-light bb" target="_blank" href="https://unsplash.com/photos/a8lTjWJJgLA">Justin Kauffman</a> on <a class="text-light bb" target="_blank" href="https://unsplash.com">Unsplash</a>
             </div>

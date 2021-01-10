@@ -87,4 +87,40 @@ $route['admin/penduduk/update/penduduk/(:any)'] = 'admin/C_penduduk/updatependud
 $route['admin/penduduk/delete/(:any)'] = 'admin/C_penduduk/delete/$1';
 $route['admin/penduduk/set/(:any)/(:any)'] = 'admin/C_penduduk/set/$1/$2';
 
+
+//rt
+$route['admin/rt'] = 'admin/C_rt/list';
+$route['admin/rt/tambah'] = 'admin/C_rt/tambah';
+$route['admin/rt/edit/(:any)'] = 'admin/C_rt/edit/$1';
+$route['admin/rt/data'] = 'admin/C_rt/data/$1';
+$route['admin/rt/getrt'] = 'admin/C_rt/getrt';
+$route['admin/rt/getPublikasi'] = 'admin/C_rt/getPublikasi';
+$route['admin/rt/getSubjek'] = 'admin/C_rt/getSubjek';
+$route['admin/rt/getSatker'] = 'admin/C_rt/getSatker';
+$route['admin/rt/get/(:any)'] = 'admin/C_rt/get/$1';
+$route['admin/rt/insert'] = 'admin/C_rt/insert';
+$route['admin/rt/update/(:any)'] = 'admin/C_rt/update/$1';
+$route['admin/rt/update/rt/(:any)'] = 'admin/C_rt/updatert/$1';
+$route['admin/rt/delete/(:any)'] = 'admin/C_rt/delete/$1';
+$route['admin/rt/set/(:any)/(:any)'] = 'admin/C_rt/set/$1/$2';
+
+
+
+//user
+$route['admin/user'] = 'admin/C_user/list';
+$route['admin/user/rt'] = 'admin/C_user/getRt';
+$route['admin/user/tambah'] = 'admin/C_user/tambah';
+$route['admin/user/edit/(:any)'] = 'admin/C_user/edit/$1';
+$route['admin/user/data'] = 'admin/C_user/data/$1';
+$route['admin/user/getuser'] = 'admin/C_user/getuser';
+$route['admin/user/getPublikasi'] = 'admin/C_user/getPublikasi';
+$route['admin/user/getSubjek'] = 'admin/C_user/getSubjek';
+$route['admin/user/getSatker'] = 'admin/C_user/getSatker';
+$route['admin/user/get/(:any)'] = 'admin/C_user/get/$1';
+$route['admin/user/insert'] = 'admin/C_user/insert';
+$route['admin/user/update/(:any)'] = 'admin/C_user/update/$1';
+$route['admin/user/update/user/(:any)'] = 'admin/C_user/updateuser/$1';
+$route['admin/user/delete/(:any)'] = 'admin/C_user/delete/$1';
+$route['admin/user/set/(:any)/(:any)'] = 'admin/C_user/set/$1/$2';
+
 // $route['admin/penduduk/tambah'] = 'admin/C_penduduk/list';

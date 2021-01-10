@@ -62,7 +62,7 @@
       <div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.html">REPOSITORI KARYA</a>
+            <a href="index.html">KELOLA PENDUDUK</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">RK</a>
@@ -77,7 +77,7 @@
             </li>
 
 
-
+            <?php if ($this->session->level != '4'):?>
             <li class="nav-item dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-cog"></i> <span>Master</span></a>
               <ul class="dropdown-menu">
@@ -85,8 +85,11 @@
                 <li><a href="<?= base_url('admin/pekerjaan') ?>">Data Pekerjaan</a></li>
                 <li><a href="<?= base_url('admin/pendidikan') ?>">Data Pendidikan</a></li>
                 <li><a href="<?= base_url('admin/pernikahan') ?>">Data Pernikahan</a></li>
+                <li><a href="<?= base_url('admin/rt') ?>">Data RT </a></li>
+                <li><a href="<?= base_url('admin/user') ?>">Data User </a></li>
               </ul>
             </li>
+            <?php endif ?>
 
             <li class="nav-item dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i> <span>Penduduk</span></a>
@@ -115,7 +118,7 @@
       </div>
       <footer class="main-footer">
         <div class="footer-left">
-          Copyright &copy; <?= date('Y') ?> <div class="bullet"></div> Powered By <a href="https://www.instagram.com/informatik.id/">Informatik.id | Repositori Karya LIPI</a>
+          Copyright &copy; <?= date('Y') ?> <div class="bullet"></div>  Kelola Penduduk</a>
         </div>
         <div class="footer-right">
           2.3.0

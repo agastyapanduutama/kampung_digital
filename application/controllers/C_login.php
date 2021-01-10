@@ -34,6 +34,15 @@ class C_login extends CI_Controller
         );
         if ($this->login->cek($where) == true) {
             $userData = $this->login->getData();
+
+            if ($userData->id_rt != '0') {
+                $array = array(
+                    'rt' => $userData->id_rt
+                );
+                $this->session->set_userdata( $array );
+                                
+            }
+
             if ($userData->status == 1) {
                 $session = array(
                     'id_user'   => $userData->id,

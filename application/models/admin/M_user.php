@@ -10,13 +10,15 @@ class M_user extends CI_Model
         $this->table = "t_user";
         $this->column_order = array(null,  'nama_user', 'username'); 
         $this->column_search = array( 'nama_user', 'username');
-        $this->order = array('id' => 'desc');
+        $this->order = array('t_user.id' => 'desc');
     }
 
     private function _get_datatables_query()
     {
-
+        $this->db->select('t_rt.nama_rt, t_user.*');
         $this->db->from($this->table);
+        $this->db->join('t_rt', 't_rt.id = t_user.id_rt', 'left');
+        
 
         $i = 0;
 

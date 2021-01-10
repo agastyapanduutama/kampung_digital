@@ -17,6 +17,8 @@
 						<th>No</th>
 						<th>Username</th>
 						<th>Nama Pengguna</th>
+						<th>Jabatan</th>
+						<th>Menjabat di RT</th>
 						<th>Status</th>
 						<th>Aksi</th>
 					</tr>
@@ -54,11 +56,17 @@
 
 					<div class="form-group">
 						<label>Tugas</label>
-						<select name="level" id="level" class="form-control">
-							<option value="1">Super Admin</option>
-							<option value="2">Pustakawan</option>
-							<option value="3">Kontributor</option>
+						<select name="level" id="level" required class="form-control">
+							<option value="">-- Silakan Pilih --</option>
+							<option value="1">Ketua RW</option>
+							<option value="2">Sekretaris RW</option>
+							<option value="3">Bendahara RW</option>
+							<option value="4">Ketua RT</option>
 						</select>
+					</div>
+
+					<div id="rt">
+
 					</div>
 
 
@@ -97,11 +105,17 @@
 
 					<div class="form-group">
 						<label>Tugas</label>
-						<select name="level" id="level1" class="form-control">
-							<option value="1">Super Admin</option>
-							<option value="2">Kontributor</option>
-							<option value="3">Pustkawan</option>
+						<select name="level" id="level" required class="form-control">
+							<option value="">-- Silakan Pilih --</option>
+							<option value="1">Ketua RW</option>
+							<option value="2">Sekretaris RW</option>
+							<option value="3">Bendahara RW</option>
+							<option value="4">Ketua RT</option>
 						</select>
+					</div>
+
+					<div id="rt1">
+
 					</div>
 
 				</div>

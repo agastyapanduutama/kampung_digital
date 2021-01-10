@@ -73,6 +73,7 @@ class C_penduduk extends CI_Controller
     {
         // $dataNa = $this->db->get_where('t_penduduk', [$this->req->id($id) => $id])->row();
         $dataNa = $this->penduduk->get($id);
+        $rt = $this->db->get('t_rt')->result();
         $agama = $this->db->get('t_agama')->result();
         $pendidikan = $this->db->get('t_pendidikan')->result();
         $pekerjaan = $this->db->get('t_pekerjaan')->result();
@@ -84,6 +85,7 @@ class C_penduduk extends CI_Controller
             'title'      => 'Edit Data Penduduk',
             'data'       => $dataNa,
             'agama'      => $agama,
+            'rt'      => $rt,
             'pendidikan' => $pendidikan,
             'pekerjaan'  => $pekerjaan,
             'pernikahan' => $pernikahan,
@@ -108,7 +110,7 @@ class C_penduduk extends CI_Controller
 
     public function tambah()
     {
-     
+        $rt = $this->db->get('t_rt')->result();
         $agama = $this->db->get('t_agama')->result();
         $pendidikan = $this->db->get('t_pendidikan')->result();
         $pekerjaan = $this->db->get('t_pekerjaan')->result();
@@ -119,6 +121,7 @@ class C_penduduk extends CI_Controller
             'title'         => 'Tambah penduduk',
             'menu'          => 'penduduk',
             'agama'         => $agama,
+            'rt'         => $rt,
             'pendidikan'    => $pendidikan,
             'pekerjaan'     => $pekerjaan,
             'pernikahan'    => $pernikahan,
@@ -130,7 +133,16 @@ class C_penduduk extends CI_Controller
 
     function insert()
     {
-        $data = $this->req->all();
+            $warga = $this->input->post('warga');
+        if ($this->session->level == 4) {
+            $warga = $this->session->rt;
+        }
+        
+        $custom = [
+            'warga' => $warga
+        ];
+
+        $data = $this->req->all($custom);
         if ($this->penduduk->insert($data) == true) {
             $this->session->set_flashdata('success', 'Berhasil Menambahkan data');
             redirect('admin/penduduk');
