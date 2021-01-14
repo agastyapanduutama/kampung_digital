@@ -211,4 +211,47 @@ class C_user extends CI_Controller
 
         echo json_encode($data);
     }
+
+    public function password()
+    {
+        $data = array(
+            'title'  => 'Ganti Password',
+            'menu'   => 'password',
+            // 'script' => 'user',
+            'konten' => 'admin/home/pengaturan'
+        );
+
+        $this->load->view('admin/templates/templates', $data, FALSE);
+    }
+
+    public function aksiGantiPassword()
+    {
+
+        
+        
+        $idUser = $this->session->userdata('id_user');
+        $password = $this->req->acak($this->input->post('passwordlama'));
+        $passwordBaru = $this->req->acak($this->input->post('passwordbaru'));
+
+        $data =  $this->db->get_where('t_user', [
+            'id' => $idUser, 
+            'password' => $password
+            ])->num_rows();
+
+        if ($data > 0) {
+            $this->db->where('id', $idUser);
+            $this->db->update('t_user', ['password' => $passwordBaru]);
+            // echo $this->db->last_query();
+            $this->session->set_flashdata('sukses', 'berhasil Merubah Password');
+            redirect( 'admin/password', 'refresh');
+        }else{
+            $this->session->set_flashdata('failed', 'Sepertinya terjadi masalah saat merubah password');
+            redirect( 'admin/password', 'refresh');
+            
+        }
+
+        // $this->req->print($data);
+        
+
+    }
 }

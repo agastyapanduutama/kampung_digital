@@ -37,6 +37,9 @@
       <div class="navbar-bg"></div>
       <nav class="navbar navbar-expand-lg main-navbar">
         <form class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+          </ul>
         </form>
         <ul class="navbar-nav navbar-right">
 
@@ -48,8 +51,8 @@
             <div class="dropdown-menu dropdown-menu-right">
 
 
-              <a href="features-settings.html" class="dropdown-item has-icon">
-                <i class="fas fa-cog"></i> Settings
+              <a href="<?= base_url('admin/password')?>" class="dropdown-item has-icon">
+                <i class="fas fa-cog"></i> Ganti Password
               </a>
               <div class="dropdown-divider"></div>
               <a href="#" id="btnKeluar" class="dropdown-item has-icon text-danger">
@@ -77,18 +80,18 @@
             </li>
 
 
-            <?php if ($this->session->level != '4'):?>
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-cog"></i> <span>Master</span></a>
-              <ul class="dropdown-menu">
-                <li><a href="<?= base_url('admin/agama') ?>">Data Agama</a></li>
-                <li><a href="<?= base_url('admin/pekerjaan') ?>">Data Pekerjaan</a></li>
-                <li><a href="<?= base_url('admin/pendidikan') ?>">Data Pendidikan</a></li>
-                <li><a href="<?= base_url('admin/pernikahan') ?>">Data Pernikahan</a></li>
-                <li><a href="<?= base_url('admin/rt') ?>">Data RT </a></li>
-                <li><a href="<?= base_url('admin/user') ?>">Data User </a></li>
-              </ul>
-            </li>
+            <?php if ($this->session->level != '4') : ?>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-cog"></i> <span>Master</span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="<?= base_url('admin/agama') ?>">Data Agama</a></li>
+                  <li><a href="<?= base_url('admin/pekerjaan') ?>">Data Pekerjaan</a></li>
+                  <li><a href="<?= base_url('admin/pendidikan') ?>">Data Pendidikan</a></li>
+                  <li><a href="<?= base_url('admin/pernikahan') ?>">Data Pernikahan</a></li>
+                  <li><a href="<?= base_url('admin/rt') ?>">Data RT </a></li>
+                  <li><a href="<?= base_url('admin/user') ?>">Data User </a></li>
+                </ul>
+              </li>
             <?php endif ?>
 
             <li class="nav-item dropdown">
@@ -118,7 +121,7 @@
       </div>
       <footer class="main-footer">
         <div class="footer-left">
-          Copyright &copy; <?= date('Y') ?> <div class="bullet"></div>  Kelola Penduduk</a>
+          Copyright &copy; <?= date('Y') ?> <div class="bullet"></div> Kelola Penduduk</a>
         </div>
         <div class="footer-right">
           2.3.0

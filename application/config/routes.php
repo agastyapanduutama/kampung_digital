@@ -104,7 +104,9 @@ $route['admin/rt/update/rt/(:any)'] = 'admin/C_rt/updatert/$1';
 $route['admin/rt/delete/(:any)'] = 'admin/C_rt/delete/$1';
 $route['admin/rt/set/(:any)/(:any)'] = 'admin/C_rt/set/$1/$2';
 
-
+// Ganti Password
+$route['admin/password'] = 'admin/C_user/password';
+$route['admin/user/aksi/ganti/password'] = 'admin/C_user/aksiGantiPassword';
 
 //user
 $route['admin/user'] = 'admin/C_user/list';
